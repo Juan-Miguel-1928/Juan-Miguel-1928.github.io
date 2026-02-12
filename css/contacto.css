@@ -1,0 +1,403 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+*,
+*::before,
+*::after{
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+	text-decoration: none;
+	list-style: none;
+}
+body{
+	background-color: #323232;
+	min-height: 100vh;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+.encabezado{
+	font-size: 40px; 
+	color: black;
+}
+.container{
+	max-width: 1600px;
+	margin: 0 auto;
+}
+.header{
+	position: absolute;
+	left: 0;
+	right: 0;
+	background-color: rgba(1, 1, 1, 0.7);
+	padding: 0px 10%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 1000;
+}
+.logo-1{
+	font-size: 25px;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	font-weight: 700;
+}
+.header .navigation ul li{
+	float: left;
+	position: relative;
+}
+.header .navigation ul li a{
+	font-size: 24px;
+	color: #FFFFFF;
+	padding: 20px;
+	display: block;
+	transition: all .2s ease;
+}
+.header .navigation ul li a:hover{
+	background-color: #685CFE;
+	border-radius: 15px;
+}
+.header .navigation ul li ul{
+	position: absolute;
+	right: 0;
+	width: 300px;
+	background-color: rgba(1, 1, 1, 0.7);
+	display: none;
+}
+.header .navigation ul li ul li a{
+	font-size: 20px;
+	text-transform: uppercase;
+	color: #FFB900;
+}
+.header .navigation ul li ul li ul{
+	position: absolute;
+	top: 0;
+	right: 300px;
+}
+.header .navigation ul li ul li ul li a{
+	color: #FFFFFF;
+	font-size: 17px;
+}
+.header .navigation ul li ul li{
+	width: 100%;
+}
+.header .navigation ul li:hover > ul{
+	display: initial;
+}
+#toggle,
+.header label{
+	display: none;
+	cursor: pointer;
+}
+.menu{
+	width: 45px;
+	height: 35px;
+}
+.btn{
+	padding: 0px 15px;
+	border-radius: 30px;
+	background-color: #685CFE;
+	color: #F2F2F2;
+	font-weight: 600;
+	cursor: pointer;
+	margin-left: 50px;
+}
+.catalogo{
+	padding: 0px 15px;
+	border-radius: 30px;
+	background-color: #FFB900;
+	color: #F2F2F2;
+	font-weight: 600;
+	cursor: pointer;
+	float: right;
+	margin-top: 100px;
+	font-size: 33px;
+}
+.catalogo:hover{
+	background-color: #F2F2F2;
+	color: #FFB900;
+}
+.audio{
+	box-shadow: 0 0 90px #FFFFFF;
+	border-radius: 50px;
+	margin: auto 10px;
+	width: 300px;
+	height: 40px;
+	margin-top: 100px;
+}
+.logo{
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	min-height: 60px;
+	padding: 20px;
+	align-items: center;
+	text-align: center;
+	background-color: white;
+}
+.logo img{
+	border-radius: 70px;
+	margin-right: 20px;
+	margin-left: 30px; 
+	width: 100px; 
+	height: auto;
+}
+.header-content{
+	height: 50px;
+}
+.header-txt{
+	margin: 20px 15px;
+	width: 50%;
+	padding-top: 130px;
+}
+.header-txt h1{
+	font-size: 30px;
+	font-weight: 800;
+	text-transform: uppercase;
+	color: #FFB900;
+	margin-bottom: 25px;
+	margin: 0 auto;
+	font-family: Poppins, sans-serif;
+}
+.header-txt p{
+	font-size: 20px;
+	color: #FFFFFF;
+	font-weight: 600;
+	margin-bottom: 25px;
+}
+.btn-1{
+	display: inline-block;
+	margin: auto 35%;
+	padding: 13px 20px;
+	border-radius: 25px;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	background-color: #FFB900;
+	box-shadow: 0 0 20PX rgba(0, 0, 0, 0.4);
+	font-family: Helvetica Neu, Helvetica;
+}
+.images{
+	width: 720px;
+	height: 400px;
+	position: absolute;
+	left: 115vh;
+	padding: 0px 20px;
+}
+.swiper{
+	width: 100%;
+	height: 100%;
+}
+.swiper-slide{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+.swiper-slide h3{
+	position: absolute;
+	left: 20px;
+	bottom: 20px;
+	color: #FFFFFF;
+	font-family: Helvetica Neu, Helvetica;
+	font-size: 30px;
+	text-transform: uppercase;
+}
+.swiper-slide img{
+	display: flex;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 15px;
+}
+.rows{
+	width: 30%;
+	position:absolute;
+	right: 500px;
+	bottom: 20px;
+}
+.swiper-button-prev{
+	margin-top: 13%;
+	height: 50px;
+	width: 50px;
+	border: 2px solid #FFFFFF;
+	border-radius: 50%;
+	font-size: 15px;
+}
+.swiper-button-next{
+	margin-top: 13%;
+	height: 50px;
+	width: 50px;
+	border: 2px solid #FFFFFF;
+	border-radius: 50%;
+	font-size: 15px;
+}
+.swiper-button-prev::after{
+	font-size: 25px;
+	color: #FFFFFF;
+}
+.swiper-button-next::after{
+	font-size: 25px;
+	color: #FFFFFF;
+}
+.map{
+	filter: grayscale(100%) invert(92%) contrast(93%);
+	margin-top: 500px;
+}
+.horario{
+	padding: 100px 0px;
+	background-color: #0d0d0d;
+}
+.horario-info h2{
+	font-size: 75px;
+	color: #FFFFFF;
+	font-weight: 800;
+	text-transform: uppercase;
+	margin-bottom: 50px;
+}
+.horario-txt{
+	display: flex;
+	justify-content: space-between;
+}
+.txt{
+	color: #FFFFFF;
+	margin: 30px 60px;
+}
+.txt h4{
+	font-size: 30px;
+	color: #FFB900;
+	margin-bottom: 30px;
+	text-transform: uppercase;
+}
+.txt p{
+	font-size: 18px;
+	font-weight: 600;
+	margin-bottom: 15px;
+}
+.footer{
+	padding: 100px 0px;
+	display: flex;
+	justify-content: space-between;
+}
+.logo-2{
+	width: 150px;
+	height: 150px;
+}
+.links h4{
+	color: #FFFFFF;
+	text-transform: uppercase;
+	margin-bottom: 25px;
+	cursor: pointer;
+}
+.links ul li a:hover{
+	text-decoration: 2px solid #FFB900 underline;
+}
+.links ul li a{
+	color: #FFFFFF;
+	font-size: 15px;
+	margin-left: 25px;
+	display: inline-block;
+}
+@media(max-width: 950px){
+	.header label{
+		display: initial;
+	}
+	.header{
+		position: absolute;
+		padding: 20px 20px;
+	}
+	.header .navigation{
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background-color: rgba(1, 1, 1, 0.7);
+		display: none;
+	}
+	.header .navigation ul li{
+		width: 100%;
+	}
+	.header .navigation ul li a{
+		padding: 8px 30px 8px 10%;
+	}
+	.header .navigation ul li ul{
+		position: relative;
+		width: 100%;
+		left: 0;
+	}
+	.header .navigation ul li ul li{
+		background-color: rgba(1, 1, 1, 0.7);
+	}
+	.header .navigation ul li ul li ul{
+		position: relative;
+		width: 100%;
+		left: 0;
+	}
+	#toggle:checked ~ .navigation{
+		display: block;
+	}
+	.map{
+		margin-top: -430px;
+	}
+	.btn{
+		width: 100%;
+		margin: 0px;
+		border-radius: 3px;
+	}
+	.audio{
+		display: none;
+	}
+	.logo{
+		display: flex;
+		justify-content: space-between;
+		width: auto;
+	}
+	.logo p{
+		font-size: 30px;
+		float: left;
+	}
+	.logo img{
+		float: left;
+		width: 100px;
+	}
+	.header-1{
+		padding: 10px 30px 20px 30px;
+		align-items: self-start;
+		flex-direction: column;
+		align-items: center;
+	}
+	.header-txt{
+		text-align: center;
+		width: 100%;
+		margin-bottom: 50px;
+	}
+	.images{
+		position: initial;
+		width: 300px;
+		height: 300px;
+		margin-top: 100%;
+		margin: 430px auto;
+	}
+	.rows{
+		display: none;
+	}
+	.horario{
+		padding: 30px;
+		text-align: center;
+	}
+	.horario-info h2{
+		font-size: 50px;
+		margin-bottom: 15px;
+	}
+	.horario-txt{
+		flex-direction: column;
+	}
+	.logo-2{
+		display: none;
+	}
+	.footer{
+		padding: 30px;
+		flex-direction: column;
+		text-align: center;
+	}
+	.links h4{
+		margin: 30px 0px 10px 0px;
+	}
+	
+}

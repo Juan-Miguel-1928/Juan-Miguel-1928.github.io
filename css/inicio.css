@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+*,
+*::before,
+*::after{
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+	text-decoration: none;
+	list-style: none;
+}
+body{
+	background-color: #323232;
+	min-height: 100vh;
+	box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+.encabezado{
+	font-size: 40px; 
+	color: black;
+}
+.container{
+	max-width: 1600px;
+}
+.header{
+	position: absolute;
+	left: 0;
+	right: 0;
+	background-color: rgba(1, 1, 1, 0.7);
+	padding: 0px 10%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 1000;
+}
+.logo-1{
+	font-size: 25px;
+	text-transform: uppercase;
+	color: #FFFFFF;
+	font-weight: 700;
+}
+.header .navigation ul li{
+	float: left;
+	position: relative;
+}
+.header .navigation ul li a{
+	font-size: 24px;
+	color: #FFFFFF;
+	padding: 20px;
+	display: block;
+	transition: all .2s ease;
+}
+.header .navigation ul li a:hover{
+	background-color: #685CFE;
+	border-radius: 15px;
+}
+.header .navigation ul li ul{
+	position: absolute;
+	right: 0;
+	width: 300px;
+	background-color: rgba(1, 1, 1, 0.7);
+	display: none;
+}
+.header .navigation ul li ul li a{
+	font-size: 20px;
+	text-transform: uppercase;
+	color: #FFB900;
+}
+.header .navigation ul li ul li ul{
+	position: absolute;
+	top: 0;
+	right: 300px;
+}
+.header .navigation ul li ul li ul li a{
+	color: #FFFFFF;
+	font-size: 17px;
+}
+.header .navigation ul li ul li{
+	width: 100%;
+}
+.header .navigation ul li:hover > ul{
+	display: initial;
+}
+#toggle,
+.header label{
+	display: none;
+	cursor: pointer;
+}
+.menu{
+	width: 45px;
+	height: 35px;
+}
+.btn{
+	padding: 0px 15px;
+	border-radius: 30px;
+	background-color: #685CFE;
+	color: #F2F2F2;
+	font-weight: 600;
+	cursor: pointer;
+	margin-left: 50px;
+}
+.catalogo{
+	padding: 0px 15px;
+	border-radius: 30px;
+	background-color: #FFB900;
+	color: #F2F2F2;
+	font-weight: 600;
+	cursor: pointer;
+	float: right;
+	margin-top: 100px;
+	font-size: 28px;
+}
+.catalogo:hover{
+	background-color: #F2F2F2;
+	color: #FFB900;
+}
+.audio{
+	box-shadow: 0 0 90px #FFFFFF;
+	border-radius: 50px;
+	margin: auto 10px;
+	width: 300px;
+	height: 40px;
+	margin-top: 100px;
+}
+.logo{
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	min-height: 60px;
+	padding: 20px;
+	align-items: center;
+	text-align: center;
+	background-color: white;
+}
+.logo img{
+	border-radius: 70px;
+	margin-right: 20px;
+	margin-left: 30px; 
+	width: 100px; 
+	height: auto;
+}
+.slider-box{
+	margin: 0px auto;
+	width: 400px;
+	height: auto;
+	overflow: hidden;
+	margin-top: -100px;
+}
+.slider-box ul{
+	display: flex;
+	padding: 0;
+	width: 100%;
+	animation: slide 10s infinite alternate ease-in-out;
+}
+.slider-box li{
+	height: 50%;
+	width: 100%;
+	list-style: none;
+	position: relative;
+}
+.slider-box img{
+	border-radius: 50px;
+	width: 400px;
+}
+.texto{
+	position: absolute;
+	text-align: center;
+	top: 200px;
+	color: #FFFFFF;
+	font-size: 90px;
+	color: white;
+}
+.texto h1{
+	font-size: 60px; 
+	color: #FFFFFF;
+}
+.texto p{
+	color: #FFB900;
+	font-size: 15px;
+}
+@keyframes slide {
+	0% { margin-left: 0; }
+	20% { margin-left: 0; }
+
+	25% { margin-left: -100%; }
+	45% { margin-left: -100%; }
+
+	50% { margin-left: -200%; }
+	70% { margin-left: -200%; }
+
+	75% { margin-left: -300%; }
+	100% { margin-left: -300%; }
+}
+.columns{
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.card{
+	background-color: rgb(62, 62, 62);
+	color: #FFFFFF;
+	width: 270px;
+	height: auto;
+	margin: 10px;
+	border-radius: 15px;
+	text-align: center;
+}
+.card-image{
+	height: 170px;
+	margin-bottom: 15px;
+	background-size: cover;
+	border-radius: 15px 15px 0 0;
+}
+.car-1{
+	background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-z2LB2rkga2otOs8eHT_Cz4mgesIwjL8N0A&usqp=CAU');
+}
+.car-2{
+	background-image: url('https://c4.wallpaperflare.com/wallpaper/736/371/739/2018-chevrolet-camaro-zl1-1le-wallpaper-preview.jpg');
+}
+.car-3{
+	background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUi_zwVm8I5X38okdrlmMNGD9AwE0JaczrbsWYez-tzPJJl92HwOyDBytRFWOehS4W5dc&usqp=CAU');
+}
+.car-4{
+	background-image: url('https://www.supercars.net/blog/wp-content/uploads/2020/10/2016_koenigsegg_agera_final_one_of_one_4-wide.jpg');
+}
+.car-5{
+	background-image: url('https://images.unsplash.com/photo-1592198084033-aade902d1aae?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D');
+}
+.car-6{
+	background-image: url('https://wallpapers.com/images/featured/mclaren-765lt-ngc9nz67yg5xo119.jpg');
+}
+.card h2{
+	padding: 10px;
+	text-align: center;
+	text-transform: uppercase;
+}
+.card p{
+	padding: 10px;
+}
+.card a{
+	font-size: 13px;
+	background-color: #FFB900;
+	color: #FFFFFF;
+	padding: 15px 20px;
+	display: block;
+	margin: 20px 50px;
+	border-radius: 15px;
+}
+.card:hover{
+	background-color: #FFFFFF;
+	color: black;
+	cursor: pointer;
+	transform: scale(1.03);
+	transition: all 1s ease;
+}
+.card a:hover{
+	color: #FFB900;
+	background-color: #323232;
+}
+.footer{
+	display: flex;
+	justify-content: space-between;
+}
+.logo-2{
+	width: 120px;
+	height: auto;
+	border-radius: 50%;
+}
+.links{
+	margin-top: 300px;
+	justify-content: center;
+	max-width: 1200px;
+	margin: auto;
+}
+.links h4{
+	color: #FFFFFF;
+	text-transform: uppercase;
+	margin-bottom: 25px;
+	cursor: pointer;
+}
+.links ul li a{
+	color: #FFFFFF;
+	font-size: 15px;
+	display: inline-block;
+	margin-left: 25px;
+}
+.links ul li a:hover{
+	text-decoration: 2px solid #FFB900 underline;
+}
+@media(max-width:950px){
+	.header label{
+		display: initial;
+	}
+	.header{
+		position: absolute;
+		padding: 20px 20px;
+	}
+	.header .navigation{
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		background-color: rgba(1, 1, 1, 0.7);
+		display: none;
+	}
+	.header .navigation ul li{
+		width: 100%;
+	}
+	.header .navigation ul li a{
+		padding: 8px 30px 8px 10%;
+	}
+	.header .navigation ul li ul{
+		position: relative;
+		width: 100%;
+		left: 0;
+	}
+	.header .navigation ul li ul li{
+		background-color: rgba(1, 1, 1, 0.7);
+	}
+	.header .navigation ul li ul li ul{
+		position: relative;
+		width: 100%;
+		left: 0;
+	}
+	#toggle:checked ~ .navigation{
+		display: block;
+	}
+	.btn{
+		width: 100%;
+		margin: 0px;
+		border-radius: 3px;
+	}
+	.slider-box{
+		margin-top: 10px;
+	}
+	.card h2{
+		font-size: 20px;
+	}
+	.card p{
+		font-size: 15px;
+	}
+	.card a{
+		font-size: 15px;
+	}
+	.audio{
+		display: none;
+	}
+	.footer{
+		padding: 30px;
+		flex-direction: column;
+		text-align: center;
+	}
+	.links h4{
+		margin: 30px 0px 10px 0px;
+	}
+	.catalogo{
+		font-size: 20px;
+		margin-top: 90px;
+	}
+}
