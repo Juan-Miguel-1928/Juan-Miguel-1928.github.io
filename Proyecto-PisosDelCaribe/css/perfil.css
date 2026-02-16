@@ -1,0 +1,229 @@
+:root {
+  --brown-900: #2C1F17;
+  --brown-700: #6F4E37;
+  --accent: #FFC107;
+  --muted: #6c757d;
+  --glass: rgba(255,255,255,0.06);
+  --card-shadow: 0 12px 30px rgba(20,20,20,0.18);
+}
+/* Fuente personalizada */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #ebd0a7;
+}
+.navbar{
+  background-color: #4A3C31;
+}
+
+/* Botón de contacto (no existe en Bootstrap) */
+.btn-contacto {
+  border: 1.5px solid #f5a623;
+  color: #f5a623;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 6px 18px;
+}
+
+.btn-contacto:hover {
+  background-color: #f5a623;
+  color: #2b1a12;
+}
+
+/* Fondo del hero (imagen personalizada) */
+.hero-banner {
+  background-image: url('../img/resultado1.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Cuadro amarillo claro (no existe bg exacto) */
+.cuadro {
+  background-color: #ffffbf;
+}
+
+/* Botón amarillo personalizado */
+.btn-cotiza {
+  font-weight: bold;
+  border-radius: 50px;
+  padding: 12px 30px;
+  border: none;
+}
+.btn-cotiza:hover {
+  background: #e0a800;
+}
+/* Círculo con ícono amarillo encima de la imagen */
+.icon-circle {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+/* Bordes redondeados en la imagen superior */
+.beneficio-card .card-img-top {
+ 
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Fondo oscuro y texto blanco en el cuerpo */
+.beneficio-card .card-body {
+  background-color: #2b1a12 !important; /* marrón oscuro */
+}
+.carousel i{
+  font-weight: bold;
+  font-size: 90px;
+}
+.carousel-item img{
+  height: 500px; /* Define una altura fija para todas las imágenes */
+  object-fit: cover; /* Asegura que la imagen cubra todo el espacio sin distorsión */
+  width: 100%; /* Mantiene el ancho receptivo de Bootstrap */
+}
+.accordion-item {
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Estilo base */
+.accordion-button {
+  background-color: #fff7ec;
+  color: #5a3d00;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 15px;
+}
+
+/* Cuando está activa (clicada/abierta) */
+.accordion-button:not(.collapsed) {
+  background-color: #fbbf24; /* Amarillo mostaza */
+  color: #000;
+  border-radius: 15px;
+}
+
+/* Cuerpo del texto */
+.accordion-body {
+  background-color: #fff7ec;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 15px 20px;
+  border-radius: 0 0 15px 15px;
+}
+
+/* Quitar bordes feos y sombras */
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+/* Cambia el ícono de flecha */
+.accordion-button::after {
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%);
+  transition: transform 0.3s ease;
+}
+
+/* Flecha gira al abrir */
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(-180deg);
+}
+
+
+.footer {
+  background-image: url('../img/fondofooter.jpeg'); /* Fondo madera */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.form-box {
+  background-color: rgba(59, 36, 18, 0.95);
+  border-radius: 15px;
+}
+
+.form-control {
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.btn-warning {
+  background-color: #fbbf24;
+  border: none;
+  border-radius: 20px;
+  color: #000;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  color: #000;
+}
+.img-fixed {
+  height: 300px; /* Ajusta esta altura según necesites */
+  object-fit: cover; /* Mantiene proporción y recorta si es necesario */
+  width: 100%;
+}
+.carousel-img {
+    height: 400px;           /* Altura fija para todas */
+    object-fit: cover;       /* Recorta la imagen sin deformarla */
+    object-position: center; /* Centra el recorte */
+}
+
+/* Opcional: limita el ancho máximo del carrusel */
+#carouselExample {
+  max-width: 800px;
+  margin: 0 auto;
+} 
+
+.register-container {
+    margin-top: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-header-custom {
+background-color: #2C1F17;;
+color: white;
+font-size: 1.5rem;
+text-align: center;
+}
+.form-label-custom {
+font-weight: bold;
+text-align: right;
+}
+.btn-regresar {
+  background-color: #734d32;
+  color: #f7f2f2;
+}
+
+.btn-regresar:hover {
+  background-color: #6F4E37;
+  color: #f7f2f2;
+}
+ .btn-actualizar {
+  background-color: #fbbf24;
+  color: #000000;
+}
+
+.btn-actualizar:hover {
+  background-color:#e0a800;
+  color: #000000;
+}
+ 
+ .btn-editar {
+  background-color:  #fbbf24;
+  color: #000000;
+}
+
+.btn-editar:hover {
+  background-color:  #e0a800;
+  color: #000000;
+}

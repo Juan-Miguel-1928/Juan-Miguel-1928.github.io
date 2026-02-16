@@ -1,0 +1,314 @@
+:root {
+  --brown-900: #2C1F17;
+  --brown-700: #6F4E37;
+  --accent: #FFC107;
+  --muted: #6c757d;
+  --glass: rgba(255,255,255,0.06);
+  --card-shadow: 0 12px 30px rgba(20,20,20,0.18);
+}
+/* Fuente personalizada */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+/* Hero catálogo */
+.catalog-hero {
+  background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('../img/resultado14.jpg') center/cover no-repeat;
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 120px;
+}
+
+.logo-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-align: center;
+  letter-spacing: -3px;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+}
+
+/* Navegación colecciones */
+.collections-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  margin: 3rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.collections-nav .nav-link {
+  background-color: transparent;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.8rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+/* Hover (antes de hacer clic) */
+.collections-nav .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.collections-nav .nav-link.active {
+  background-color: #ffc107 ;  /* Color warning de Bootstrap */
+  color: white !important;
+  font-weight: 700;
+    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+}
+
+/* Opcional: más redondeado y espaciado */
+.col-item {
+  margin: 0 0.5rem;
+}
+
+.col-item { 
+  text-align: center; 
+  cursor: pointer; 
+}
+
+.col-link {
+  position: relative; 
+  padding-bottom: 8px; 
+}
+
+.col-link:hover, 
+.col-link.active {
+  color: white;  
+}
+.col-link.active {
+  background-color: #ffff;     
+  color: white;
+  padding: 0.75rem 1.5rem;       
+  border-radius: 50px;           
+}
+.col-link.active::after {
+  content: ''; 
+  position: absolute; 
+  bottom: 0; 
+  left: 50%; 
+  transform: translateX(-50%);
+  width: 70%; 
+  height: 3px; 
+  border-radius: 2px;
+}
+
+/* Contenido colección */
+.collection {
+  display: none; animation: fade 0.4s ease; 
+}
+
+.collection.active {
+  display: block; 
+}
+
+@keyframes fade { 
+  from { opacity: 0; } to { opacity: 1; } 
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.product-card {
+  background: rgba(255,255,255,0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  position: relative;
+}
+
+.product-card:hover { 
+  transform: translateY(-6px); 
+}
+
+.product-img {
+  height: 180px;
+  background: #444 center/cover no-repeat;
+}
+
+.product-info { 
+  padding: 1rem; 
+  text-align: center; 
+}
+
+.product-name { 
+  font-weight: 600; 
+}
+
+.product-price { 
+  color: white; 
+  background: #f93f6e;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.footer {
+  background-image: url('../img/fondofooter.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  padding: 3rem 0;
+  position: relative;
+}
+
+/* Overlay oscuro para mejorar legibilidad */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+/* Asegura que el contenido esté encima del overlay */
+.footer > .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Estilos del formulario dentro del footer */
+.form-box {
+  background-color: rgba(59, 36, 18, 0.95);
+  border-radius: 15px;
+  padding: 1.5rem;
+}
+
+.form-control {
+  border-radius: 10px;
+  font-size: 0.9rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-control:focus {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 0.2rem rgba(251, 191, 36, 0.25);
+  color: white;
+}
+
+/* Botón amarillo dentro del footer */
+.btn-warning {
+  background-color: #fbbf24;
+  border: none;
+  border-radius: 20px;
+  color: #000;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.alert{
+  border: none;
+  border-radius: 20px;
+  font-weight: 600;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+/* Íconos de redes sociales */
+.footer .bi {
+  font-size: 1.8rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.footer .bi:hover {
+  color: #fbbf24;
+  transform: scale(1.2);
+}
+
+/* Mapa embebido */
+.footer iframe {
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form-control,
+.form-control:focus {
+  background-color: #ffffff !important;
+  color: #000 !important;
+  border: 1px solid #ced4da;
+}
+
+.form-control::placeholder {
+  color: #6c757d !important;
+  opacity: 1;
+}
+
+.accordion-item {
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Estilo base */
+.accordion-button {
+  background-color: #fff7ec;
+  color: #5a3d00;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 15px;
+}
+
+/* Cuando está activa (clicada/abierta) */
+.accordion-button:not(.collapsed) {
+  background-color: #fbbf24; /* Amarillo mostaza */
+  color: #000;
+  border-radius: 15px;
+}
+
+/* Cuerpo del texto */
+.accordion-body {
+  background-color: #fff7ec;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 15px 20px;
+  border-radius: 0 0 15px 15px;
+}
+
+/* Quitar bordes feos y sombras */
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+/* Cambia el ícono de flecha */
+.accordion-button::after {
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%);
+  transition: transform 0.3s ease;
+}
+
+/* Flecha gira al abrir */
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(-180deg);
+}
+@media (max-width: 767.98px) {
+      .carousel-item .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }

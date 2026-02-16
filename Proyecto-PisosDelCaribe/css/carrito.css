@@ -1,0 +1,236 @@
+/* estilos.css - Solo lo que NO tiene Bootstrap */
+
+/* Fuente personalizada */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #FFF8EB;
+}
+
+h1,
+h2,
+h4,
+h6 {
+  font-family: 'Poppins Semibold'
+}
+
+.productos {
+  background: #ffffff;
+  border: 1px solid #2D1A10;
+  border-radius: 12px;
+}
+
+.resumen {
+  background: #FFFFFF;
+  border: 1px solid #2D1A10;
+  border-radius: 12px;
+  height: 250px;
+}
+
+.precioscar {
+  font-weight: bold;
+}
+
+.imagenilustrativa {
+  background-size: cover;
+  background-position: center;
+  min-height: 175px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  overflow: hidden;
+  /* asegura que la imagen no se salga */
+}
+
+.imagenilustrativa img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  /* llena el cuadro sin deformar */
+  border-radius: 12px;
+  border: 2px solid #2D1A10;
+  /* respeta las esquinas redondeadas */
+}
+
+.recomendados {
+  border-radius: 12px;
+  background: #FFFFFF;
+  border: 1px solid #2D1A10;
+
+}
+
+@media (max-width: 767.98px) {
+  .recomendados {
+    width: 460px;
+  }
+}
+
+/* Botón de contacto (no existe en Bootstrap) */
+.btn-contacto {
+  border: 1.5px solid #f5a623;
+  color: #f5a623;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 6px 18px;
+}
+
+.btn-contacto:hover {
+  background-color: #f5a623;
+  color: #2b1a12;
+}
+
+/* Cuadro amarillo claro (no existe bg exacto) */
+.cuadro {
+  background-color: #ffffbf;
+}
+
+.footer {
+  background-image: url('../img/fondofooter.jpeg');
+  /* Fondo madera */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.form-box {
+  background-color: rgba(59, 36, 18, 0.95);
+  border-radius: 15px;
+}
+
+.form-control {
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.btn-warning {
+  background-color: #fbbf24;
+  border: none;
+  border-radius: 20px;
+  color: #000;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  color: #000;
+}
+
+.sku {
+  font-size: 12px;
+}
+
+.img-fixed {
+  height: 300px;
+  /* Ajusta esta altura según necesites */
+  object-fit: cover;
+  /* Mantiene proporción y recorta si es necesario */
+  width: 100%;
+}
+
+.card {
+      position: relative;
+    }
+    .card .OFF {
+      color: green;
+      background: #83ff7cff;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border-radius: 4px;
+      padding: 4px 8px;
+      font-weight: bold;
+    }
+    .card .meses{
+      color: green;
+      font-size: 12px;
+    }
+    #coleccionesSlider .card-img-top {
+      height: 150px;
+      object-fit: cover;
+      width: 100%;
+    }
+    #coleccionesSlider .card {
+      height: 100%;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #2D1A10;
+    }
+    .contador {
+      width: 120px;
+      border: 1px solid #000;
+      display: flex;
+      background: #fbbf24;
+      height: 38px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .anadir,
+    .cantidad {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fbbf24;
+      border: none;
+      font-size: 18px;
+      padding: 0;
+    }
+    .sumar { border-left: 1.5px solid #000; }
+    .restar { border-right: 1.5px solid #000; }
+    .anadir:hover { background: #f2a81f; }
+    .anadir:active { transform: scale(0.85); }
+    .Agregar {
+      align-items: center;
+      font-family: 'Poppins';
+      justify-content: center;
+      height: 40px;
+      border: 1px solid #2D1A10;
+      background: #fbbf24;
+    }
+    .carousel-control-prev, .carousel-control-next {
+      width: 50px;
+      opacity: 1;
+    }
+    .carousel-control-prev { left: -45px;  transform: translateY(-10%);}
+    .carousel-control-next { right: -45px;  transform: translateY(-10%);}
+
+    .carousel-indicators {
+      bottom: -10px;
+    }
+    .carousel-indicators [data-bs-target] {
+      width: 40px;
+      height: 6px;
+      border-radius: 3px;
+      background-color: #fde68a !important; /* Amarillo claro */
+      opacity: 1;
+      margin: 0 6px;
+      transition: all 0.3s ease;
+    }
+
+
+    .carousel-indicators .active {
+      background-color: #f59e0b !important; /* Naranja fuerte */
+      width: 60px !important;
+    }
+
+    /* MÓVIL: solo 1 tarjeta por slide */
+    @media (max-width: 767.98px) {
+      #coleccionesSlider .carousel-item .row {
+        flex-wrap: nowrap !important;
+      }
+      #coleccionesSlider .carousel-item .col-md-3 {
+        min-width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100% !important;
+      }
+      #coleccionesSlider .carousel-item .col-md-3 ~ .col-md-3 {
+        display: none !important;
+      }
+      #coleccionesSlider .carousel-item.active .row {
+        justify-content: center !important;
+      }
+      .carousel-indicators {
+        bottom: -10px;
+}
+}

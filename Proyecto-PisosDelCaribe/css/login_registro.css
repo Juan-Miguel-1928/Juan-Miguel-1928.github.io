@@ -1,0 +1,55 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: black;
+}
+
+.registro {
+    background-image: url('../img/fondoregistro.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.login {
+    background-image: url('../img/fondologin2.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.Formulario {
+    background-color: #2D1A10;
+    border-radius: 4%;
+}
+
+.btn {
+    background: #fbbf24;
+    font-weight: bold;
+    width: 150;
+    height: 40;
+}
+
+.btn:hover {
+    display: block;
+    transition: 0.2s;
+    filter: drop-shadow(0 0 4px #fffdef);
+}
+
+.btn:active {
+    transform: scale(0.9);
+}
+
+input:hover {
+    transform: scaleX(1.02);
+    transition: 0.5s;
+}
+
+a {
+    color: #ffffff;
+}

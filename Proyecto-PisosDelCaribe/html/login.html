@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/login_registro.css">
+    <title>login</title>
+</head>
+
+<body>
+    <div class="login">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md d-flex p-4 g-2 align-items-center justify-content-center">
+                    <form method="post" class="Formulario p-4" action="php/login.php">
+                        <img src="img/logo.png" alt="logo" class="align-items-start">
+                        <div class="row p-2">
+                            <div class="col-md">
+                                <input type="text" class="form-control" placeholder="Ingrese su nombre de Usuario"
+                                    name="username" required>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="col-md">
+                                <input type="password" class="form-control" name="password"
+                                    placeholder="Ingrese su contraseña" required>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="d-flex col-md-12 justify-content-around">
+                                <button type="submit" class="btn px-4">Iniciar sesion</button>
+                                <a href="registro.html" class="btn px-4">Registrarse</a> <br>
+                            </div>
+                        </div>
+                        <div class="row p-2">
+                            <div class="d-flex justify-content-center col">
+                                <a href="home.php" class="fw-semibold " style="color: white;">Regresar al inicio</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

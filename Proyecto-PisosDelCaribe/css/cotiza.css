@@ -1,0 +1,151 @@
+:root {
+  --brown-900: #2C1F17;
+  --brown-700: #6F4E37;
+  --accent: #FFC107;
+  --muted: #6c757d;
+  --glass: rgba(255,255,255,0.06);
+  --card-shadow: 0 12px 30px rgba(20,20,20,0.18);
+}
+/* ===== FUENTE GLOBAL ===== */
+body {
+  font-family: 'Poppins', sans-serif !important;
+  scroll-behavior: smooth;
+}
+
+/* ===== COTIZADOR ===== */
+.calc-card {
+  background: linear-gradient(135deg, #3b2409 0%, #2d1b08 100%);
+  border-radius: 28px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,193,7,0.2);
+}
+
+.input-custom,
+.select-custom {
+  background: white;
+  border-radius: 20px;
+  border: none;
+  height: 62px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0 1.5rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
+}
+
+.input-custom:focus,
+.select-custom:focus {
+  box-shadow: 0 0 0 5px rgba(255,193,7,0.35);
+  transform: translateY(-3px);
+}
+
+.total-price {
+  font-size: 4rem;
+  font-weight: 900;
+  background: linear-gradient(90deg, #ffc107, #ffb300);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 4px 20px rgba(255,193,7,0.4);
+}
+
+/* ===== RESEÑAS ===== */
+.review-card {
+  background: white;
+  border-radius: 30px;
+  padding: 3rem 2rem;
+  max-width: 500px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  transition: transform 0.4s ease;
+}
+
+.review-card:hover {
+  transform: translateY(-15px);
+}
+
+.review-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border: 6px solid #ffc107;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.btn-review {
+  background: #ffc107;
+  color: #000;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 0.7rem 2rem;
+  transition: all 0.3s;
+}
+
+.btn-review:hover {
+  background: #e0a800;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(224,168,0,0.4);
+}
+
+/* Flechas del carousel */
+#reviewsCarousel .carousel-control-prev,
+#reviewsCarousel .carousel-control-next {
+  width: 60px;
+  height: 60px;
+  background: rgba(0,0,0,0.5);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#reviewsCarousel .carousel-control-prev { left: 20px; }
+#reviewsCarousel .carousel-control-next { right: 20px; }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: url('../img/fondofooter.jpeg') center/cover no-repeat;
+  position: relative;
+}
+
+.footer {
+  background-image: url('../img/fondofooter.jpeg'); /* Fondo madera */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.form-box {
+  background-color: rgba(59, 36, 18, 0.95);
+  border-radius: 15px;
+}
+
+.form-control {
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.btn-warning {
+  background-color: #fbbf24;
+  border: none;
+  border-radius: 20px;
+  color: #000;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  color: #000;
+}
+.img-fixed {
+  height: 300px; /* Ajusta esta altura según necesites */
+  object-fit: cover; /* Mantiene proporción y recorta si es necesario */
+  width: 100%;
+}
+.carousel-img {
+    height: 400px;           /* Altura fija para todas */
+    object-fit: cover;       /* Recorta la imagen sin deformarla */
+    object-position: center; /* Centra el recorte */
+}
+
+/* Opcional: limita el ancho máximo del carrusel */
+#carouselExample {
+  max-width: 800px;
+  margin: 0 auto;
+}

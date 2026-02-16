@@ -1,0 +1,232 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Poppins Semibold'
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #FFF8EB;
+}
+
+p,
+span,
+label,
+.btn {
+  font-family: 'Poppins'
+}
+
+.busqueda {
+  background: #A44325;
+  border: 1px solid #2D1A10;
+  border-radius: 8px;
+}
+
+.tabla {
+  background: #FFBF52;
+  border: 1px solid #2D1A10;
+  border-radius: 8px;
+}
+
+.footer {
+  background: url('../img/fondofooter.jpeg') center/cover no-repeat;
+  position: relative;
+}
+
+.footer {
+  background-image: url('../img/fondofooter.jpeg');
+  /* Fondo madera */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.form-box {
+  background-color: rgba(59, 36, 18, 0.95);
+  border-radius: 15px;
+}
+
+.form-control {
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.btn-warning {
+  background-color: #fbbf24;
+  border: none;
+  border-radius: 20px;
+  color: #000;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  color: #000;
+}
+
+.img-fixed {
+  height: 300px;
+  /* Ajusta esta altura según necesites */
+  object-fit: cover;
+  /* Mantiene proporción y recorta si es necesario */
+  width: 100%;
+}
+
+.carousel-img {
+  height: 400px;
+  /* Altura fija para todas */
+  object-fit: cover;
+  /* Recorta la imagen sin deformarla */
+  object-position: center;
+  /* Centra el recorte */
+}
+
+/* Opcional: limita el ancho máximo del carrusel */
+#carouselExample {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+:root {
+  --cafe-oscuro: #2C1F17;
+  --cafe-medio: #3B2412;
+  --amarillo-mostaza: #FFBF52;
+  --amarillo-hover: #e0a800;
+  --beige-claro: #F5E6D3;
+  --texto-claro: #F8F9FA;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom, #fff8f0, #fdf1e6);
+  color: var(--cafe-oscuro);
+  min-height: 100vh;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+  color: var(--cafe-oscuro);
+}
+
+.navbar {
+  background: var(--cafe-oscuro) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link {
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.nav-link:hover {
+  color: var(--amarillo-mostaza) !important;
+  transform: translateY(-2px);
+}
+
+.busqueda {
+  background: linear-gradient(135deg, #3B2412, #2C1F17);
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(44, 31, 23, 0.35);
+  overflow: hidden;
+}
+
+.busqueda h2 {
+  background: rgba(0, 0, 0, 0.2);
+  margin: 0;
+  padding: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.tabla {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(44, 31, 23, 0.15);
+  border: none;
+}
+
+.tabla h2 {
+  background: var(--amarillo-mostaza);
+  color: var(--cafe-oscuro);
+  margin: 0;
+  padding: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table thead {
+  background: var(--cafe-medio);
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #fdf8f0;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #fff2d8 !important;
+  transform: scale(1.01);
+  transition: all 0.2s;
+}
+
+.btn-warning {
+  background: var(--amarillo-mostaza);
+  color: #000;
+  font-weight: 600;
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s;
+  box-shadow: 0 4px 10px rgba(255, 191, 82, 0.3);
+}
+
+.btn-warning:hover {
+  background: var(--amarillo-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(224, 168, 0, 0.4);
+}
+
+.footer {
+  background: linear-gradient(rgba(44, 31, 23, 0.95), rgba(44, 31, 23, 0.98)), url('../img/fondofooter.jpeg') center/cover no-repeat;
+  margin-top: 4rem;
+  color: white;
+}
+
+.form-box {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+
+  .busqueda,
+  .tabla {
+    margin: 1rem;
+  }
+}

@@ -1,0 +1,171 @@
+/* estilos.css - Solo lo que NO tiene Bootstrap */
+
+/* Fuente personalizada */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Botón de contacto (no existe en Bootstrap) */
+.btn-contacto {
+  border: 1.5px solid #f5a623;
+  color: #f5a623;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 6px 18px;
+}
+.btn-contacto:hover {
+  background-color: #f5a623;
+  color: #2b1a12;
+}
+
+/* Fondo del hero (imagen personalizada) */
+.hero-banner {
+  background-image: url('../img/fondoprincipal.jpg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* Cuadro amarillo claro (no existe bg exacto) */
+.cuadro {
+  background-color: #ffffbf;
+}
+
+/* Sección Cotiza Ahora: fondo + degradado */
+.cotizaahora {
+  background: url('../img/cotizaahora.jpg') center/cover;
+  height: 500px;
+  position: relative;
+}
+.cotizaahora::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, #fff, transparent);
+  opacity: .6;
+}
+
+/* Botón amarillo personalizado */
+.btn-cotiza {
+  background: #FFC107;
+  color: black;
+  font-weight: bold;
+  border-radius: 50px;
+  padding: 12px 30px;
+  border: none;
+}
+.btn-cotiza:hover {
+  background: #e0a800;
+}
+/* Círculo con ícono amarillo encima de la imagen */
+.icon-circle {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+/* Bordes redondeados en la imagen superior */
+.beneficio-card .card-img-top {
+ 
+  height: 180px;
+  object-fit: cover;
+}
+
+/* Fondo oscuro y texto blanco en el cuerpo */
+.beneficio-card .card-body {
+  background-color: #2b1a12 !important; /* marrón oscuro */
+}
+.carousel i{
+  font-weight: bold;
+  font-size: 90px;
+}
+.carousel-item img{
+  height: 500px; /* Define una altura fija para todas las imágenes */
+  object-fit: cover; /* Asegura que la imagen cubra todo el espacio sin distorsión */
+  width: 100%; /* Mantiene el ancho receptivo de Bootstrap */
+}
+.accordion-item {
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Estilo base */
+.accordion-button {
+  background-color: #fff7ec;
+  color: #5a3d00;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 15px;
+}
+
+/* Cuando está activa (clicada/abierta) */
+.accordion-button:not(.collapsed) {
+  background-color: #fbbf24; /* Amarillo mostaza */
+  color: #000;
+  border-radius: 15px;
+}
+
+/* Cuerpo del texto */
+.accordion-body {
+  background-color: #fff7ec;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 15px 20px;
+  border-radius: 0 0 15px 15px;
+}
+
+/* Quitar bordes feos y sombras */
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+/* Cambia el ícono de flecha */
+.accordion-button::after {
+  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%);
+  transition: transform 0.3s ease;
+}
+
+/* Flecha gira al abrir */
+.accordion-button:not(.collapsed)::after {
+  transform: rotate(-180deg);
+}
+.footer {
+  background-image: url('../img/fondofooter.jpeg'); /* Fondo madera */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.form-box {
+  background-color: rgba(59, 36, 18, 0.95);
+  border-radius: 15px;
+}
+
+.form-control {
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+
+.btn-warning {
+  background-color: #fbbf24;
+  border: none;
+  border-radius: 20px;
+  color: #000;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800;
+  color: #000;
+}
