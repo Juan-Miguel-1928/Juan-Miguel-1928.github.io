@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Ventas</title>
+	<link rel="stylesheet" type="text/css" href="./css/ventas.css">
+</head>
+<body>
+	<header class="header">
+		<div class="menu container">
+			<a href="#" class="logo">LOGO</a>
+			<input type="checkbox" id="menu"/>
+			<label for="menu">
+				<img src="./imagenes/menu.png" class="menu-icono" alt="menu">
+			</label>
+			<nav class="navbar">
+				<ul>
+					<li><a href="#">Inicio</a></li>
+					<li><a href="#">Servicos</a></li>
+					<li><a href="#">Productos</a></li>
+					<li><a href="#">Contacto</a></li>
+				</ul>			
+			</nav>
+			<div>
+				<ul>
+					<li class="submenu">
+						<img src="./imagenes/carrito.png" id="img-carrito" alt="carrito" width="70px">
+						<div id="carrito">
+							<table id="lista-carrito">
+								<thead>
+									<tr>
+										<th>Imagen</th>
+										<th>Nombre</th>
+										<th>Precio</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody></tbody>
+							</table>
+							<a href="#" id="vaciar-carrito" class="btn-2">Vaciar Carrito</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="header-content container">
+			<div class="header-img">
+				<img src="./imagenes/portada.png" alt="">
+			</div>
+			<div class="header-txt">
+				<h1>Ofertas especiales</h1>
+				<p>estrena las mejores prendas</p>
+				<a href="#" class="btn-1">Informacion</a>
+			</div>
+		</div>
+	</header>
+	<section class="ofert container">
+		<div class="ofert-1">
+			<div class="ofert-img">
+				<img src="./imagenes/blusa.jpg" alt="">
+			</div>
+			<div class="ofert-txt">
+				<h3>Producto 1</h3>
+				<a href="#" class="btn-2">Informacion</a>
+			</div>
+		</div>
+		<div class="ofert-1">
+			<div class="ofert-img">
+				<img src="./imagenes/calcetines.jpg" alt="">
+			</div>
+			<div class="ofert-txt">
+				<h3>Producto 2</h3>
+				<a href="#" class="btn-2">Informacion</a>
+			</div>
+		</div>
+		<div class="ofert-1">
+			<div class="ofert-img">
+				<img src="./imagenes/camisa.jpeg" alt="">
+			</div>
+			<div class="ofert-txt">
+				<h3>Producto 3</h3>
+				<a href="#" class="btn-2">Informacion</a>
+			</div>
+		</div>
+	</section>
+	<main class="products container" id="lista-1">
+		<h2>Productos</h2>
+		<div class="product-content">
+
+			<div class="product">
+				<img src="./imagenes/cinturon.jpg" alt="">
+				<div class="product-txt">
+					<h3>Cinturon</h3>
+					<p>Calidad Premium</p>
+					<p class="precio">$79.99</p>
+					<button type="button" class="agregar-carrito btn-2" data-id="1">Agregar al carrito</button>
+				</div>
+			</div>
+
+			<div class="product">
+				<img src="./imagenes/falda.jpg" alt="">
+				<div class="product-txt">
+					<h3>Falda</h3>
+					<p>Calidad Premium</p>
+					<p class="precio">$149.99</p>
+					<button type="button" class="agregar-carrito btn-2" data-id="2">Agregar al carrito</button>
+				</div>
+			</div>
+
+			<div class="product">
+				<img src="./imagenes/gorra.jpeg" alt="">
+				<div class="product-txt">
+					<h3>Gorro</h3>
+					<p>Calidad Premium</p>
+					<p class="precio">$99.99</p>
+					<button type="button" class="agregar-carrito btn-2" data-id="3">Agregar al carrito</button>
+				</div>
+			</div>
+
+			<div class="product">
+				<img src="./imagenes/guantes.jpg" alt="">
+				<div class="product-txt">
+					<h3>Guantes</h3>
+					<p>Calidad Premium</p>
+					<p class="precio">$49.99</p>
+					<button type="button" class="agregar-carrito btn-2" data-id="4">Agregar al carrito</button>
+				</div>
+			</div>
+
+			<div class="product">
+				<img src="./imagenes/short.jpeg" alt="">
+				<div class="product-txt">
+					<h3>Short</h3>
+					<p>Calidad Premium</p>
+					<p class="precio">$129.99</p>
+					<button type="button" class="agregar-carrito btn-2" data-id="5">Agregar al carrito</button>
+				</div>
+			</div>
+
+			<div class="product">
+				<img src="./imagenes/sudadera.jpg" alt="">
+				<div class="product-txt">
+					<h3>Sudadera</h3>
+					<p>Calidad Premium</p>
+					<p class="precio">$249.99</p>
+					<button type="button" class="agregar-carrito btn-2" data-id="6">Agregar al carrito</button>
+				</div>
+			</div>
+		</div>
+	</main>
+	<section class="icons container">
+		<div class="icon-1">
+			<div class="icon-img">
+				<img src="./imagenes/percha.png" alt="">
+			</div>
+			<div class="icon-txt">
+				<h3>Lorem ipsum dolor sit amet.</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div>
+		</div>
+		<div class="icon-1">
+			<div class="icon-img">
+				<img src="./imagenes/percha.png" alt="">
+			</div>
+			<div class="icon-txt">
+				<h3>Lorem ipsum dolor sit amet.</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div>
+		</div>
+		<div class="icon-1">
+			<div class="icon-img">
+				<img src="./imagenes/percha.png" alt="">
+			</div>
+			<div class="icon-txt">
+				<h3>Lorem ipsum dolor sit amet.</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. 
+				</p>
+			</div>
+		</div>
+	</section>
+	<section class="blog container">
+		<div class="blog-1">
+			<img src="./imagenes/fondo.jpg">
+			<h3>Blog 1</h3>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.
+			</p>
+		</div>
+		<div class="blog-1">
+			<img src="./imagenes/fondo.jpg">
+			<h3>Blog 2</h3>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.
+			</p>
+		</div>
+		<div class="blog-1">
+			<img src="./imagenes/fondo.jpg">
+			<h3>Blog 3</h3>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat.
+			</p>
+		</div>
+	</section>
+	<footer class="footer">
+		<div class="footer-content container">
+			<div class="link">
+				<h3>Lorem</h3>
+				<ul>
+					<li><a href="#">Lorem</a></li>
+					<li><a href="#">Lorem</a></li>
+					<li><a href="#">Lorem</a></li>
+					<li><a href="#">Lorem</a></li>
+				</ul>
+			</div>
+			<div class="link">
+				<h3>Lorem</h3>
+				<ul>
+					<li><a href="#">Lorem</a></li>
+					<li><a href="#">Lorem</a></li>
+					<li><a href="#">Lorem</a></li>
+					<li><a href="#">Lorem</a></li>
+				</ul>
+			</div>
+			<div class="link">
+				<h3>Lorem</h3>
+				<ul>
+					<li><a href="#">Lorem</a></li>
+					<li><a href="#">Lorem</a></li>
+					<li><a href="#">Lorem</a></li>
+					<li><a href="#">Lorem</a></li>
+				</ul>
+			</div>
+			<div class="link">
+				<h3>Lorem</h3>
+				<ul>
+					<li><a href="#">Lorem</a></li>
+					<li><a href="#">Lorem</a></li>
+					<li><a href="#">Lorem</a></li>
+					<li><a href="#">Lorem</a></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+    <script type="text/javascript" src="./js/ventas.js"></script>
+</body>
+</html>
