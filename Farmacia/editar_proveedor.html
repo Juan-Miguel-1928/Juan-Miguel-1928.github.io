@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Proveedores - Farmacia</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #ecf0f5;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        .navbar {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+        .card-header {
+            font-weight: 500;
+            border-bottom: none;
+        }
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        .btn-sm {
+            padding: 0.35rem 0.75rem;
+        }
+        .alert-container {
+            min-height: 60px;
+        }
+    </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark mb-4">
+    <div class="container-fluid px-4">
+        <span class="navbar-brand mb-0 h1">
+            <i class="bi bi-truck me-2"></i>Gestión de Proveedores
+        </span>
+        <a href="panel.html" class="btn btn-sm btn-outline-light">
+            <i class="bi bi-arrow-left me-1"></i>Volver al Panel
+        </a>
+    </div>
+</nav>
+<div class="container">
+    <div class="alert-container mb-4">
+        <div id="alertPlaceholder"></div>
+    </div>
+    <div class="row g-4">
+        <!-- Formulario -->
+        <div class="col-lg-5">
+            <div class="card">
+                <div class="card-header text-white bg-primary" id="formHeader">
+                    <h5 class="mb-0" id="formTitle">Nuevo Proveedor</h5>
+                </div>
+                <div class="card-body">
+                    <form id="proveedorForm" novalidate>
+                        <input type="hidden" id="editId" value="">
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="nombre" required placeholder="Ej: Farmacéutica Nacional">
+                            <div class="invalid-feedback">El nombre es obligatorio</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <input type="tel" class="form-control" id="telefono" placeholder="Ej: 998 123 4567">
+                        </div>
+                        <div class="mb-3">
+                            <label for="direccion" class="form-label">Dirección</label>
+                            <textarea class="form-control" id="direccion" rows="3" placeholder="Calle, número, colonia, ciudad"></textarea>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg" id="btnSubmit">
+                                <i class="bi bi-save me-1"></i> Guardar Proveedor
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary d-none" id="btnCancel">
+                                Cancelar edición
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!-- Lista de proveedores -->
+        <div class="col-lg-7">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">Lista de Proveedores</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0 align-middle">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Teléfono</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="proveedoresTableBody">
+                            <!-- Se llena con JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+const proveedoresDefault = [
+    { id: 1, nombre: "Farmacéutica Nacional", telefono: "555-0101", direccion: "Av. Principal 123" },
+    { id: 2, nombre: "Genéricos MX", telefono: "555-0102", direccion: "Calle 2 No. 456" },
+    { id: 3, nombre: "Laboratorios Best", telefono: "555-0103", direccion: "Avenida 3 No. 789" },
+    { id: 4, nombre: "Farmex", telefono: "555-0104", direccion: "Calle 4 No. 321" },
+    { id: 5, nombre: "NaturVita", telefono: "555-0105", direccion: "Avenida 5 No. 654" }
+];
+
+let proveedores = JSON.parse(localStorage.getItem('proveedoresFarmacia')) || proveedoresDefault;
+let nextId = proveedores.length > 0 ? Math.max(...proveedores.map(p => p.id)) + 1 : 1;
+
+// Elementos del DOM
+const form = document.getElementById('proveedorForm');
+const editIdInput = document.getElementById('editId');
+const nombreInput = document.getElementById('nombre');
+const telefonoInput = document.getElementById('telefono');
+const direccionInput = document.getElementById('direccion');
+const btnSubmit = document.getElementById('btnSubmit');
+const btnCancel = document.getElementById('btnCancel');
+const formTitle = document.getElementById('formTitle');
+const formHeader = document.getElementById('formHeader');
+const tableBody = document.getElementById('proveedoresTableBody');
+const alertPlaceholder = document.getElementById('alertPlaceholder');
+
+function saveProveedores() {
+    localStorage.setItem('proveedoresFarmacia', JSON.stringify(proveedores));
+}
+
+function showAlert(message, type = 'success') {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = `
+        <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+            <i class="bi bi-${type === 'success' ? 'check-circle-fill' : 'exclamation-triangle-fill'} me-2"></i>
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+    alertPlaceholder.innerHTML = '';
+    alertPlaceholder.appendChild(wrapper);
+   
+    // Auto cerrar después de 4 segundos
+    setTimeout(() => {
+        wrapper.querySelector('.alert').classList.remove('show');
+        setTimeout(() => wrapper.remove(), 200);
+    }, 4000);
+}
+
+function renderProveedores() {
+    tableBody.innerHTML = '';
+   
+    if (proveedores.length === 0) {
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="4" class="text-center text-muted py-4">
+                    No hay proveedores registrados aún
+                </td>
+            </tr>
+        `;
+        return;
+    }
+    
+    proveedores.forEach(prov => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${prov.id}</td>
+            <td>${prov.nombre}</td>
+            <td>${prov.telefono || '—'}</td>
+            <td>
+                <button class="btn btn-warning btn-sm me-1 edit-btn" data-id="${prov.id}" title="Editar">
+                    <i class="bi bi-pencil"></i> Editar
+                </button>
+                <button class="btn btn-danger btn-sm delete-btn" data-id="${prov.id}" title="Eliminar">
+                    <i class="bi bi-trash"></i> Eliminar
+                </button>
+            </td>
+        `;
+        tableBody.appendChild(tr);
+    });
+}
+
+form.addEventListener('submit', function(e) {
+    e.preventDefault();
+   
+    if (!form.checkValidity()) {
+        e.stopPropagation();
+        form.classList.add('was-validated');
+        return;
+    }
+    
+    const id = editIdInput.value ? parseInt(editIdInput.value) : nextId++;
+    const nuevoProveedor = {
+        id: id,
+        nombre: nombreInput.value.trim(),
+        telefono: telefonoInput.value.trim() || null,
+        direccion: direccionInput.value.trim() || null
+    };
+    
+    if (editIdInput.value) {
+        // Editar
+        const index = proveedores.findIndex(p => p.id === id);
+        if (index !== -1) {
+            proveedores[index] = nuevoProveedor;
+            showAlert('Proveedor actualizado correctamente', 'success');
+        }
+    } else {
+        // Nuevo
+        proveedores.push(nuevoProveedor);
+        showAlert('Proveedor agregado correctamente', 'success');
+    }
+    
+    saveProveedores();
+    renderProveedores();
+    resetForm();
+});
+
+function resetForm() {
+    form.reset();
+    editIdInput.value = '';
+    form.classList.remove('was-validated');
+    btnSubmit.textContent = 'Guardar Proveedor';
+    btnCancel.classList.add('d-none');
+    formTitle.textContent = 'Nuevo Proveedor';
+    formHeader.classList.remove('bg-warning');
+    formHeader.classList.add('bg-primary');
+}
+
+btnCancel.addEventListener('click', resetForm);
+
+// Delegación de eventos para editar y eliminar
+tableBody.addEventListener('click', function(e) {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    
+    const id = parseInt(btn.dataset.id);
+    
+    if (btn.classList.contains('edit-btn')) {
+        const prov = proveedores.find(p => p.id === id);
+        if (prov) {
+            editIdInput.value = prov.id;
+            nombreInput.value = prov.nombre;
+            telefonoInput.value = prov.telefono || '';
+            direccionInput.value = prov.direccion || '';
+            btnSubmit.textContent = 'Actualizar Proveedor';
+            btnCancel.classList.remove('d-none');
+            formTitle.textContent = 'Editar Proveedor';
+            formHeader.classList.remove('bg-primary');
+            formHeader.classList.add('bg-warning');
+           
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    } else if (btn.classList.contains('delete-btn')) {
+        const prov = proveedores.find(p => p.id === id);
+        if (confirm(`¿Realmente deseas eliminar "${prov.nombre}"?\nEsta acción no se puede deshacer.`)) {
+            proveedores = proveedores.filter(p => p.id !== id);
+            saveProveedores();
+            renderProveedores();
+            showAlert(`Proveedor "${prov.nombre}" eliminado correctamente`, 'danger');
+            if (editIdInput.value == id) resetForm();
+        }
+    }
+});
+
+
+renderProveedores();
+
+// Escuchar cambios desde otras ventanas/pestañas
+window.addEventListener('storage', function(e) {
+    if (e.key === 'proveedoresFarmacia') {
+        proveedores = JSON.parse(e.newValue) || proveedoresDefault;
+        renderProveedores();
+    }
+});
+</script>
+</body>
+</html>

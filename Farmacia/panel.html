@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Inventario - Farmacia</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+      body {
+        background-color: #ecf0f5;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      .navbar {
+        box-shadow: 0 1px 3px rgba(0,0,0,.2);
+      }
+      .table th {
+        font-weight: 600;
+      }
+      .stock-bajo {
+        background-color: #fff3cd !important;
+        font-weight: 500;
+      }
+      .sin-stock {
+        background-color: #f8d7da !important;
+        font-weight: bold;
+        color: #721c24;
+      }
+      .alert-container {
+        min-height: 60px;
+      }
+    </style>
+</head>
+<body>
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark bg-dark mb-4">
+  <div class="container-fluid">
+    <span class="navbar-brand mb-0 h1">
+      <i class="bi bi-capsule me-2"></i>Panel de Inventario - Farmacia
+    </span>
+    <div>
+      <a href="editar_medicamento.html" class="btn btn-sm btn-success me-2">
+        <i class="bi bi-plus-lg"></i> Nuevo medicamento
+      </a>
+      <a href="#" class="btn btn-sm btn-outline-light">
+        <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+      </a>
+    </div>
+  </div>
+</nav>
+<div class="container">
+    <div class="alert-container mb-4">
+        <div id="alertPlaceholder"></div>
+    </div>
+    <h2 class="mb-4 fw-semibold">Inventario de medicamentos</h2>
+    <!-- FILTRO -->
+    <form id="filterForm" class="row g-3 mb-4">
+        <div class="col-auto">
+            <label for="categoria" class="col-form-label fw-medium">Filtrar por categoría:</label>
+        </div>
+        <div class="col-auto">
+            <select name="categoria" id="categoria" class="form-select">
+                <option value="">Todas las categorías</option>
+                <option value="Analgésicos">Analgésicos</option>
+                <option value="Antiinflamatorios">Antiinflamatorios</option>
+                <option value="Antibióticos">Antibióticos</option>
+                <option value="Gastrointestinal">Gastrointestinal</option>
+                <option value="Antialérgicos">Antialérgicos</option>
+                <option value="Vitaminas y suplementos">Vitaminas y suplementos</option>
+                <option value="Controlados / Psicotrópicos">Controlados / Psicotrópicos</option>
+                <option value="Antidiabéticos">Antidiabéticos</option>
+                <option value="Respiratorios">Respiratorios</option>
+                <option value="Otros">Otros</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <button type="button" id="clearFilter" class="btn btn-outline-secondary">
+              <i class="bi bi-x-lg"></i> Limpiar
+            </button>
+        </div>
+    </form>
+    <!-- TABLA -->
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered align-middle table-hover" id="medicamentosTable">
+          <thead class="table-primary">
+              <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Categoría</th>
+                  <th>Presentación</th>
+                  <th>Cantidad</th>
+                  <th>Precio Venta</th>
+                  <th>Proveedor</th>
+                  <th>Acciones</th>
+              </tr>
+          </thead>
+          <tbody id="tableBody">
+              <!-- Las filas se generan con JavaScript -->
+          </tbody>
+      </table>
+      <div id="noResults" style="display: none;">
+        <div class="text-center py-5">
+          <i class="bi bi-search display-4 text-muted mb-3 d-block"></i>
+          <h5>No se encontraron medicamentos</h5>
+          <p>Intenta con otra categoría o limpia el filtro</p>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Modal para editar medicamento -->
+<div class="modal fade" id="editarMedicamentoModal" tabindex="-1" aria-labelledby="editarMedicamentoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="editarMedicamentoLabel">Editar Medicamento</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editMedicamentoForm" novalidate>
+          <input type="hidden" id="editId" value="">
+          <!-- Nombre -->
+          <div class="mb-3">
+            <label for="editNombre" class="form-label">Nombre del medicamento <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" id="editNombre" required placeholder="Ej: Ibuprofeno 400 mg">
+            <div class="invalid-feedback">El nombre es obligatorio.</div>
+          </div>
+          <!-- Categoría -->
+          <div class="mb-3">
+            <label for="editCategoria" class="form-label">Categoría <span class="text-danger">*</span></label>
+            <select class="form-select" id="editCategoria" required>
+              <option value="">Seleccione una categoría</option>
+              <option value="Analgésicos">Analgésicos</option>
+              <option value="Antiinflamatorios">Antiinflamatorios</option>
+              <option value="Antibióticos">Antibióticos</option>
+              <option value="Gastrointestinal">Gastrointestinal</option>
+              <option value="Antialérgicos">Antialérgicos</option>
+              <option value="Vitaminas y suplementos">Vitaminas y suplementos</option>
+              <option value="Controlados / Psicotrópicos">Controlados / Psicotrópicos</option>
+              <option value="Antidiabéticos">Antidiabéticos</option>
+              <option value="Respiratorios">Respiratorios</option>
+              <option value="Otros">Otros</option>
+            </select>
+            <div class="invalid-feedback">Seleccione una categoría.</div>
+          </div>
+          <!-- Presentación -->
+          <div class="mb-3">
+            <label for="editPresentacion" class="form-label">Presentación</label>
+            <input type="text" class="form-control" id="editPresentacion" placeholder="Ej: Caja c/10 cápsulas">
+          </div>
+          <!-- Cantidad -->
+          <div class="mb-3">
+            <label for="editCantidad" class="form-label">Cantidad en inventario <span class="text-danger">*</span></label>
+            <input type="number" class="form-control" id="editCantidad" min="0" required>
+            <div class="invalid-feedback">Ingrese una cantidad válida (0 o más).</div>
+          </div>
+          <!-- Precio -->
+          <div class="mb-3">
+            <label for="editPrecio" class="form-label">Precio de venta (MXN) <span class="text-danger">*</span></label>
+            <div class="input-group">
+              <span class="input-group-text">$</span>
+              <input type="number" step="0.01" class="form-control" id="editPrecio" min="0" required>
+            </div>
+            <div class="invalid-feedback">Ingrese un precio válido.</div>
+          </div>
+          <!-- Proveedor -->
+          <div class="mb-3">
+            <label for="editProveedor" class="form-label">Proveedor</label>
+            <select class="form-select" id="editProveedor">
+              <option value="">Sin proveedor asignado</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="btnGuardarEdicion">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+// Medicamentos iniciales por defecto
+const medicamentosDefault = [
+    { id: 1001, nombre: "Paracetamol 500 mg", categoria: "Analgésicos", presentacion: "Caja c/20 tabs", cantidad: 184, precio: 18.50, proveedor: "Farmacéutica Nacional" },
+    { id: 1002, nombre: "Ibuprofeno 400 mg", categoria: "Antiinflamatorios", presentacion: "Caja c/10 tabs", cantidad: 12, precio: 32.00, proveedor: "Genéricos MX" },
+    { id: 1003, nombre: "Amoxicilina 500 mg", categoria: "Antibióticos", presentacion: "Caja c/12 cáps", cantidad: 0, precio: 68.00, proveedor: "Laboratorios Best" },
+    { id: 1004, nombre: "Omeprazol 20 mg", categoria: "Gastrointestinal", presentacion: "Caja c/14 cáps", cantidad: 256, precio: 145.00, proveedor: "Medicina Económica" },
+    { id: 1005, nombre: "Loratadina 10 mg", categoria: "Antialérgicos", presentacion: "Blíster c/10 tabs", cantidad: 89, precio: 42.50, proveedor: "Farmex" },
+    { id: 1006, nombre: "Complejo B + Vit C", categoria: "Vitaminas y suplementos", presentacion: "Frasco c/60 tabs", cantidad: 47, precio: 98.00, proveedor: "NaturVita" },
+    { id: 1007, nombre: "Clonazepam 2 mg", categoria: "Controlados / Psicotrópicos", presentacion: "Caja c/30 tabs", cantidad: 31, precio: 320.00, proveedor: "PsicoFar" },
+    { id: 1008, nombre: "Ácido acetilsalicílico 100 mg", categoria: "Antiinflamatorios", presentacion: "Frasco c/100 tabs", cantidad: 312, precio: 65.00, proveedor: "Genéricos MX" },
+    { id: 1009, nombre: "Metformina 850 mg", categoria: "Antidiabéticos", presentacion: "Caja c/30 tabs", cantidad: 8, precio: 110.00, proveedor: "Laboratorios Best" },
+    { id: 1010, nombre: "Salbutamol 100 mcg inh", categoria: "Respiratorios", presentacion: "Inhalador 200 dosis", cantidad: 64, precio: 180.00, proveedor: "Farmacéutica Nacional" },
+    { id: 1011, nombre: "Cetirizina 10 mg", categoria: "Antialérgicos", presentacion: "Caja c/20 tabs", cantidad: 135, precio: 55.00, proveedor: "Farmex" },
+];
+
+let medicamentos = JSON.parse(localStorage.getItem('medicamentosFarmacia')) || medicamentosDefault;
+let nextMedicamentoId = medicamentos.length > 0 ? Math.max(...medicamentos.map(m => m.id)) + 1 : 1002;
+
+// Referencias al DOM
+const tableBody = document.getElementById('tableBody');
+const categoriaSelect = document.getElementById('categoria');
+const noResults = document.getElementById('noResults');
+const filterForm = document.getElementById('filterForm');
+const clearFilterBtn = document.getElementById('clearFilter');
+const alertPlaceholder = document.getElementById('alertPlaceholder');
+const editMedicamentoModal = new bootstrap.Modal(document.getElementById('editarMedicamentoModal'));
+const editMedicamentoForm = document.getElementById('editMedicamentoForm');
+const editIdInput = document.getElementById('editId');
+const editNombreInput = document.getElementById('editNombre');
+const editCategoriaInput = document.getElementById('editCategoria');
+const editPresentacionInput = document.getElementById('editPresentacion');
+const editCantidadInput = document.getElementById('editCantidad');
+const editPrecioInput = document.getElementById('editPrecio');
+const editProveedorInput = document.getElementById('editProveedor');
+const btnGuardarEdicion = document.getElementById('btnGuardarEdicion');
+
+
+function saveMedicamentos() {
+    localStorage.setItem('medicamentosFarmacia', JSON.stringify(medicamentos));
+}
+
+function getProveedores() {
+    return JSON.parse(localStorage.getItem('proveedoresFarmacia')) || [];
+}
+
+function cargarProveedoresEnSelect() {
+    const proveedores = getProveedores();
+    editProveedorInput.innerHTML = '<option value="">Sin proveedor asignado</option>';
+    proveedores.forEach(prov => {
+        const option = document.createElement('option');
+        option.value = prov.nombre;
+        option.textContent = prov.nombre;
+        editProveedorInput.appendChild(option);
+    });
+}
+
+function showAlert(message, type = 'success') {
+    const wrapper = document.createElement('div');
+    wrapper.innerHTML = `
+        <div class="alert alert-${type} alert-dismissible fade show" role="alert">
+            <i class="bi bi-${type === 'success' ? 'check-circle-fill' : 'exclamation-triangle-fill'} me-2"></i>
+            ${message}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    `;
+    alertPlaceholder.innerHTML = '';
+    alertPlaceholder.appendChild(wrapper);
+   
+    setTimeout(() => {
+        wrapper.querySelector('.alert').classList.remove('show');
+        setTimeout(() => wrapper.remove(), 200);
+    }, 4000);
+}
+
+function renderTable(filtroCategoria = "") {
+    tableBody.innerHTML = '';
+    let resultados = 0;
+    
+    medicamentos.forEach(med => {
+        if (filtroCategoria === "" || med.categoria === filtroCategoria) {
+            const row = document.createElement('tr');
+           
+            if (med.cantidad === 0) row.classList.add('sin-stock');
+            else if (med.cantidad < 20) row.classList.add('stock-bajo');
+            
+            row.innerHTML = `
+                <td>${med.id}</td>
+                <td>${med.nombre}</td>
+                <td>${med.categoria}</td>
+                <td>${med.presentacion}</td>
+                <td class="text-center">${med.cantidad}</td>
+                <td>$${med.precio.toFixed(2)}</td>
+                <td>${med.proveedor || '—'}</td>
+                <td>
+                    <button class="btn btn-sm btn-outline-primary me-1 edit-btn" data-id="${med.id}" title="Editar">
+                        <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger delete-btn" data-id="${med.id}" title="Eliminar">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </td>
+            `;
+            tableBody.appendChild(row);
+            resultados++;
+        }
+    });
+    
+    noResults.style.display = resultados === 0 ? 'block' : 'none';
+}
+
+
+filterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const categoria = categoriaSelect.value;
+    renderTable(categoria);
+});
+
+categoriaSelect.addEventListener('change', () => {
+    renderTable(categoriaSelect.value);
+});
+
+clearFilterBtn.addEventListener('click', () => {
+    categoriaSelect.value = "";
+    renderTable("");
+});
+
+
+tableBody.addEventListener('click', function(e) {
+    const btn = e.target.closest('button');
+    if (!btn) return;
+    
+    const id = parseInt(btn.dataset.id);
+    const med = medicamentos.find(m => m.id === id);
+    
+    if (!med) return;
+    
+    if (btn.classList.contains('edit-btn')) {
+        // Abrir modal de edición
+        cargarProveedoresEnSelect();
+        editIdInput.value = med.id;
+        editNombreInput.value = med.nombre;
+        editCategoriaInput.value = med.categoria;
+        editPresentacionInput.value = med.presentacion;
+        editCantidadInput.value = med.cantidad;
+        editPrecioInput.value = med.precio;
+        editProveedorInput.value = med.proveedor || '';
+        editMedicamentoForm.classList.remove('was-validated');
+        editMedicamentoModal.show();
+    } else if (btn.classList.contains('delete-btn')) {
+        // Eliminar medicamento
+        if (confirm(`¿Realmente deseas eliminar "${med.nombre}"?`)) {
+            medicamentos = medicamentos.filter(m => m.id !== id);
+            saveMedicamentos();
+            renderTable(categoriaSelect.value);
+            showAlert(`Medicamento "${med.nombre}" eliminado correctamente`, 'danger');
+        }
+    }
+});
+
+btnGuardarEdicion.addEventListener('click', function() {
+    if (!editMedicamentoForm.checkValidity()) {
+        editMedicamentoForm.classList.add('was-validated');
+        return;
+    }
+    
+    const id = parseInt(editIdInput.value);
+    const index = medicamentos.findIndex(m => m.id === id);
+    
+    if (index !== -1) {
+        medicamentos[index] = {
+            id: id,
+            nombre: editNombreInput.value.trim(),
+            categoria: editCategoriaInput.value,
+            presentacion: editPresentacionInput.value.trim(),
+            cantidad: parseInt(editCantidadInput.value),
+            precio: parseFloat(editPrecioInput.value),
+            proveedor: editProveedorInput.value || null
+        };
+        
+        saveMedicamentos();
+        renderTable(categoriaSelect.value);
+        editMedicamentoModal.hide();
+        editMedicamentoForm.classList.remove('was-validated');
+        showAlert('Medicamento actualizado correctamente', 'success');
+    }
+});
+
+
+renderTable();
+
+// Escuchar cambios desde otras ventanas/pestañas
+window.addEventListener('storage', function(e) {
+    if (e.key === 'medicamentosFarmacia') {
+        medicamentos = JSON.parse(e.newValue) || medicamentosDefault;
+        renderTable(categoriaSelect.value);
+    }
+});
+</script>
+</body>
+</html>
